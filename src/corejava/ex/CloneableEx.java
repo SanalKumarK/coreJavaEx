@@ -32,14 +32,20 @@ public class CloneableEx implements Cloneable{
         return super.clone();
     }
 
-    public final static void main(String[] args) {
+    public static void main(String[] args) {
         try {
             CloneableEx ex1 = new CloneableEx(1,"test");
             CloneableEx ex2 = (CloneableEx) ex1.clone();
 
             System.out.println(ex1.rollNo + "  "+  ex1.name);
             System.out.println(ex2.rollNo + "  "+  ex2.name);
-            System.out.println(ex1.getData());
+            //System.out.println(ex1.getData());
+            //System.exit(5222);
+            Runtime.getRuntime().halt(0);
+
+            System.out.println(ex1.rollNo + "  "+  ex1.name);
+            System.out.println(ex2.rollNo + "  "+  ex2.name);
+
         }catch (CloneNotSupportedException e){
             e.printStackTrace();
         }
