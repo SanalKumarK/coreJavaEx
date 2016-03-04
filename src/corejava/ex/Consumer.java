@@ -6,7 +6,7 @@ import java.util.Vector;
 /**
  * Created by kurunsk on 09-02-2016.
  */
-public class Consumer extends Thread{
+public class Consumer implements Runnable{
 
     Producer producer;
 
@@ -23,12 +23,13 @@ public class Consumer extends Thread{
 
     public static void main(String[] args) {
         Producer prod = new Producer();
-        prod.start();
-        new Consumer(prod).start();
+        Thread th = new Thread(prod);//.start();
+        th.start();
+        new Thread(new Consumer(prod)).start();
     }
 }
 
-class Producer extends Thread {
+class Producer implements Runnable{
     private Vector<String> messages = new Vector<>();
     private int MAX_QUEUE = 5;
 
